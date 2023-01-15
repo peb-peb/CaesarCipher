@@ -1,29 +1,73 @@
 """
-V1.0 - only allows lowercase alphabets (ASCII = 97-122)
+A Python Script to implement Caesar Cipher.
 """
 
-def caesar_encrypt(message: str, shift: int) -> str:
+def cipher(input_string: str, shift_key: int) -> str:
     """
-    
+    Implementation of Cipher Technique.
+        Params: input_string (required), shift_key (required)
+        Returns: encrypted_string
     """
-    encrypted_message = ""
-    for ch in message:
-        ch = ch.lower() # remove this if using ASCII 32-126
-        if ch.isalpha():
-            encrypted_message += chr((ord(ch) + shift - 97) % 26 + 97)
+    # Initialise str to store the encrypted message
+    encrypted_string = ""
+    for text in input_string:
+        if text == " ":
+            # For Blank Space, encrypted as it is
+            encrypted_string += text
+        elif text.isupper():
+            # For Upper Case
+            encrypted_string = encrypted_string + chr(
+                (ord(text) + shift_key - 65) % 26 + 65
+            )
         else:
-            encrypted_message += ch
-    return encrypted_message
+            # For Lower Case
+            encrypted_string = encrypted_string + chr(
+                (ord(text) + shift_key - 97) % 26 + 97
+            )
+    return encrypted_string
 
-def caesar_decrypt(message: str, shift: int) -> str:
+
+def decipher(encrypt_string: str, shift_key: int) -> str:
     """
-    
+    Implementation of DeCipher Technique.
+        Params: encrypt_string (required), shift_key (required)
+        Returns: decrypted_string
     """
-    decrypted_message = ""
-    for ch in message:
-        ch = ch.lower() # remove this if using ASCII 32-126
-        if ch.isalpha():
-            decrypted_message += chr((ord(ch) - shift - 97) % 26 + 97)
+    # Initialise str to store the decrypted message
+    decrypted_string = ""
+    for text in encrypt_string:
+        if text == " ":
+            # For Blank Space, encrypted as it is
+            decrypted_string += text
+        elif text.isupper():
+            # For Upper Case
+            decrypted_string = decrypted_string + chr(
+                (ord(text) - shift_key - 65) % 26 + 65
+            )
         else:
-            decrypted_message += ch
-    return decrypted_message
+            # For Lower Case
+            decrypted_string = decrypted_string + chr(
+                (ord(text) - shift_key - 97) % 26 + 97
+            )
+    return decrypted_string
+
+
+if __name__ == "__main__":
+    """
+    Function Calling
+    """
+    mode = int(input("1. Encryption\t2. Decryption - "))
+    if mode == 1:
+        imput_string = input("Enter the text to be encrypted: ")
+        shift = int(input("Enter the shift key: "))
+        print("Text before Encryption: ", imput_string)
+        print("Shift Key: ", shift)
+        print("Encrypted text: ", cipher(imput_string, shift))
+    elif mode == 2:
+        encrypted_string = input("Enter the text to be decrypted: ")
+        shift = int(input("Enter the shift key: "))
+        print("Text before Decryption: ", encrypted_string)
+        print("Shift Key: ", shift)
+        print("Decrypted text: ", decipher(encrypted_string, shift))
+    else:
+        print("Invalid Selction!") 
