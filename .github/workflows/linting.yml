@@ -1,20 +1,22 @@
-name: Tests
+name: Linting
 
 on:
   push:
   pull_request:
   workflow_dispatch:
-
+    
 jobs:
-  tests:
-    name: Tests
+  linting:
+    name: Linting
     runs-on: ubuntu-latest
+    # strategy:
+    #   fail-fast: true
+    #   matrix:
+    #     tool: ['isort', 'flake8']
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
         with:
           python-version: '3.11'
-      - name: Install Dependecies
-        run: pip install -r requirements.txt
-      - name: Run tests
-        run: pytest -v
+      - name: Run 'flake8'
+        run: flake8 .
