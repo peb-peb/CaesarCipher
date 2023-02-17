@@ -1,7 +1,3 @@
-"""
-A Python Script to implement Caesar Cipher.
-"""
-
 def cipher(input_string: str, shift_key: int) -> str:
     """
     Implementation of Cipher Technique.
@@ -70,4 +66,4 @@ if __name__ == "__main__":
         print("Shift Key: ", shift)
         print("Decrypted text: ", decipher(encrypted_string, shift))
     else:
-        print("Invalid Selction!") 
+        print("Invalid Selction!")

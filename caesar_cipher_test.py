@@ -1,5 +1,7 @@
-import caesar_cipher
 import pytest
+
+import caesar_cipher
+
 
 @pytest.mark.parametrize(
     "input_text,shift,encrypted_text",
@@ -10,6 +12,7 @@ import pytest
 )
 def test_cipher(input_text, shift, encrypted_text):
     assert caesar_cipher.cipher(input_text, shift) == encrypted_text
+
 
 @pytest.mark.parametrize(
     "encrypted_text,shift,decrypted_text",
