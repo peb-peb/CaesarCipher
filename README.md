@@ -1,5 +1,7 @@
 # Caesar Cipher
 
+[![Tests](https://github.com/peb-peb/CaesarCipher/actions/workflows/tests.yml/badge.svg)](https://github.com/peb-peb/CaesarCipher/actions/workflows/tests.yml)
+
 Caesar Cipher or Shift Cipher is one of the most basic and one of the first cryptographical approach ever used. Named after the famous Roman Ruler Gaius Julius Caesar the roots of this technique are very very old.
 
 The technique is really simple, a secret key (a number) is shared between the sender and receiver, and in order to encrypt the message. The letters are substituted by another letter by a fixed number of position down the alphabets. This Shift is determined using the shared key, opposite is done to determine the actual message.
